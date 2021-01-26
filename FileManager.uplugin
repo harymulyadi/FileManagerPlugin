@@ -1,0 +1,21 @@
+{
+    "FileVersion" : 1,
+
+    "FriendlyName" : "FileManager Plugin",
+    "Version" : 1,
+    "VersionName": "1.0",
+    "Description" : "Here I describe the capabilities of the plugin.",
+    "Category" : "Code.FileManager",
+    "CreatedBy" : "Hary Mulyadi",
+    "CreatedByURL" : "http://gneu.org",
+    "CanContainContent" : "true",
+    "EnabledByDefault" : true,
+
+    "Modules" :
+    [
+        {
+            "Name" : "FileManager",
+            "Type" : "Runtime"
+        } 
+    ]
+}
