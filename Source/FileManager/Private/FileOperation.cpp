@@ -15,8 +15,7 @@
 
 
 void UFileOperation::DoesFileExist(FString filePath, bool &exist)
-{
-	//exist = FPlatformFileManager::Get().GetPlatformFile().FileExists(*filePath);
+{ 
 	exist = FPaths::FileExists(*filePath);
 }
 
@@ -32,18 +31,11 @@ void UFileOperation::DoesDirExist(FString filePath, bool &exist)
 }
 
 void UFileOperation::CopyAFile(FString from, FString to, bool &success)
-{
-	/*try
-	{*/
+{ 
 	std::ifstream src(TCHAR_TO_UTF8(*from), std::ios::binary);
 	std::ofstream dst(TCHAR_TO_UTF8(*to), std::ios::binary);
 	dst << src.rdbuf();
-	success = true;
-	/*}
-	catch(...)
-	{
-	success = false;
-	}*/
+	success = true; 
 }
 
 void UFileOperation::DeleteAFile(FString path, bool &success)
@@ -108,9 +100,9 @@ void UFileOperation::OpenFolderDialog(FString DialogTitle, FString DefaultPath, 
 
 					// Display the file name to the user.
 					if (SUCCEEDED(hr))
-					{
-						//MessageBox(NULL, pszFilePath, L"File Path", MB_OK);
+					{ 
 						FolderLocation = pszFilePath;
+						FolderLocation += TEXT("\\");
 						CoTaskMemFree(pszFilePath);
 					}
 					pItem->Release();
@@ -119,19 +111,6 @@ void UFileOperation::OpenFolderDialog(FString DialogTitle, FString DefaultPath, 
 			pFileOpen->Release();
 		}
 		CoUninitialize();
-	}
-	//if (GEngine)
-	//{
-	//	if (GEngine->GameViewport)
-	//	{
-	//		void* ParentWindowHandle = GEngine->GameViewport->GetWindow()->GetNativeWindow()->GetOSWindowHandle();
-	//		IDesktopPlatform* DesktopPlatform = FDesktopPlatformModule::Get();
-	//		if (DesktopPlatform)
-	//		{
-	//			uint32 SelectionFlag = 0; //A value of 0 represents single file selection while a value of 1 represents multiple file selection
-	//			DesktopPlatform->OpenDirectoryDialog(ParentWindowHandle, DialogTitle, DefaultPath, FolderLocation);
-	//		}
-	//	}
-	//}
+	} 
 }
 
